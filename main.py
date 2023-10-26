@@ -15,28 +15,38 @@ end_time = datetime.datetime.combine(datetime.date.today(), date_s1)
 
 position = kite.positions()
 
-print(position)
+try:
+    choice = int(input("1. Place a new trade \n2. Add SL and Tgt to the existing position\n"))
+except:
+    print("Only Integer values are allowed!!")
 
-while True:
-    x = kite.ltp(["NSE:NIFTY 50", "NSE:NIFTY BANK", "NSE:NIFTY FIN SERVICE"])
-    Nifty50 = x['NSE:NIFTY 50']['last_price']
-    Banknifty = x['NSE:NIFTY BANK']['last_price']
-    Finnifty = x['NSE:NIFTY FIN SERVICE']['last_price']
-    print("Nifty 50: ", Nifty50 , "BankNifty: ", Banknifty, "FinNifty: ", Finnifty)
-    # if(Nifty50>19475):
-    #     kite.place_order(variety=kite.VARIETY_REGULAR,
-    #                     exchange=kite.EXCHANGE_NFO,
-    #                     tradingsymbol=position['net'][0]['tradingsymbol'],
-    #                     transaction_type=kite.TRANSACTION_TYPE_SELL,
-    #                     quantity=-(position['net'][0]['quantity']),
-    #                     product=kite.PRODUCT_NRML,
-    #                     order_type=kite.ORDER_TYPE_MARKET,
-    #                     price=None,
-    #                     validity=None,
-    #                     disclosed_quantity=None,
-    #                     trigger_price=None,
-    #                     squareoff=None,
-    #                     stoploss=None,
-    #                     trailing_stoploss=None,
-    #                     tag="TradeViaPython")
-    #     break
+if(choice == 1):
+    print(kite.instruments("NFO"))
+elif(choice == 2):
+    while True:
+        Index_data = kite.ltp(["NSE:NIFTY 50", "NSE:NIFTY BANK", "NSE:NIFTY FIN SERVICE"])
+        Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
+        Banknifty_last_price = Index_data['NSE:NIFTY BANK']['last_price']
+        Finnifty_last_price = Index_data['NSE:NIFTY FIN SERVICE']['last_price']
+        print("Nifty 50: ", Nifty50_last_price , "BankNifty: ", Banknifty_last_price, "FinNifty: ", Finnifty_last_price)
+        # if(Nifty50>19475):
+        #     kite.place_order(variety=kite.VARIETY_REGULAR,
+        #                     exchange=kite.EXCHANGE_NFO,
+        #                     tradingsymbol=position['net'][0]['tradingsymbol'],
+        #                     transaction_type=kite.TRANSACTION_TYPE_SELL,
+        #                     quantity=-(position['net'][0]['quantity']),
+        #                     product=kite.PRODUCT_NRML,
+        #                     order_type=kite.ORDER_TYPE_MARKET,
+        #                     price=None,
+        #                     validity=None,
+        #                     disclosed_quantity=None,
+        #                     trigger_price=None,
+        #                     squareoff=None,
+        #                     stoploss=None,
+        #                     trailing_stoploss=None,
+        #                     tag="TradeViaPython")
+        #     break
+else:
+    print("You can only choose from above options!")    
+
+
