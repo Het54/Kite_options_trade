@@ -32,7 +32,7 @@ if(choice == 1):
 
 elif(choice == 2):
     try:
-        index_in_position = int(input(("Which Index order is placed in position? \n1. Nifty\n2. Banknifty\n3. FinNifty")))
+        index_in_position = int(input(("Which Index order is placed in position? \n1. Nifty\n2. Banknifty\n3. FinNifty\n")))
     except:
         print("Only Integer values are allowed!!")  
     
@@ -46,11 +46,18 @@ elif(choice == 2):
     else:
         trade = "buy"
 
+    product = (position['day'][0]['product'])
+    if(product == "MIS"):
+        product = kite.PRODUCT_MIS
+    else:
+        product = kite.PRODUCT_NRML
+
 
     
     if(trade == "buy"):
 
         if(index_in_position == 1):
+
 
             while True:
 
@@ -64,8 +71,8 @@ elif(choice == 2):
                                     exchange=kite.EXCHANGE_NFO,
                                     tradingsymbol=position['day'][0]['tradingsymbol'],
                                     transaction_type=kite.TRANSACTION_TYPE_SELL,
-                                    quantity=-(position['day'][0]['quantity']),
-                                    product=kite.PRODUCT_NRML,
+                                    quantity=(position['day'][0]['quantity']),
+                                    product=product,
                                     order_type=kite.ORDER_TYPE_MARKET,
                                     price=None,
                                     validity=None,
@@ -75,7 +82,7 @@ elif(choice == 2):
                                     stoploss=None,
                                     trailing_stoploss=None,
                                     tag="TradeViaPython")
-                    break 
+                    break
 
 
 
@@ -93,8 +100,8 @@ elif(choice == 2):
                                     exchange=kite.EXCHANGE_NFO,
                                     tradingsymbol=position['day'][0]['tradingsymbol'],
                                     transaction_type=kite.TRANSACTION_TYPE_SELL,
-                                    quantity=-(position['day'][0]['quantity']),
-                                    product=kite.PRODUCT_NRML,
+                                    quantity=(position['day'][0]['quantity']),
+                                    product=product,
                                     order_type=kite.ORDER_TYPE_MARKET,
                                     price=None,
                                     validity=None,
@@ -121,8 +128,8 @@ elif(choice == 2):
                                     exchange=kite.EXCHANGE_NFO,
                                     tradingsymbol=position['day'][0]['tradingsymbol'],
                                     transaction_type=kite.TRANSACTION_TYPE_SELL,
-                                    quantity=-(position['day'][0]['quantity']),
-                                    product=kite.PRODUCT_NRML,
+                                    quantity=(position['day'][0]['quantity']),
+                                    product=product,
                                     order_type=kite.ORDER_TYPE_MARKET,
                                     price=None,
                                     validity=None,
