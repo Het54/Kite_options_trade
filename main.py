@@ -5,7 +5,7 @@ import pytz
 
 #Login into Kite
 
-enctoken = "aLYEPFlyDkGh328m3iLinkujeBonQ1CcVGMTjL8SLs4tvIMdLE6jJhZYnXMjFUy5pw7JPlLCL/9MdomInFWtRUYrzEw8ydgoOCvrbQ7ST8WtCP0mahY8Kg=="
+enctoken = "enter your enctoken here"
 kite = KiteApp(enctoken=enctoken)
 
 date_s = datetime.time(hour=9, minute=15)
