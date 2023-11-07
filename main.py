@@ -5,7 +5,7 @@ import pytz
 
 #Login into Kite
 
-enctoken = "M6ZzMv08XShfM0uCdOG85VORKri6xH2eFlB7oW0dCu4i5oMbr+pxeOlVMPP6uADc6ptQWruEOdk73QGmh9n0odLWq5THaaPopzhDECxhPb76ltaGqypF2g=="
+enctoken = "Enter your enctoken here"
 kite = KiteApp(enctoken=enctoken)
 
 date_s = datetime.time(hour=9, minute=15)
@@ -24,9 +24,24 @@ except:
 
 if(choice == 1):
     y = kite.instruments("NFO")
-    result = [i for i in y if i['name'] == "NIFTY" and i['expiry'] == datetime.date(2023, 11, 2) and i['strike'] == 19250]
-    # print(result)
-    print("Position: ", position)
+    index_name_option = int(input("Want to place order in which Index? \n1. Nifty\n2. Banknifty\n3. FinNifty\n"))
+    if(index_name_option == 1):
+        index_name = "NIFTY"
+    elif(index_name_option == 2):
+        index_name = "BANKNIFTY"
+    else:
+        index_name = "FINNIFTY"
+    year = int(input("Enter Year of Expiry: "))
+    month = int(input("Enter Month of Expiry: "))
+    day = int(input("Enter Day of Expiry: "))
+    strike_price = int(input("Enter Strike Price: "))
+    type = int(input("Enter type of the order \n1. CE\n2. PE\n"))
+    if(type == 1):
+        order_type = "CE"
+    else:
+        order_type = "PE"
+    result = [i for i in y if i['name'] == index_name and i['expiry'] == datetime.date(year, month, day) and i['strike'] == strike_price and i['instrument_type'] == order_type]
+    print(result[0]['tradingsymbol'])
 
 
 
