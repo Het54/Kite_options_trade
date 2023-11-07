@@ -5,7 +5,7 @@ import pytz
 
 #Login into Kite
 
-enctoken = "Enter your enctoken here"
+enctoken = "aLYEPFlyDkGh328m3iLinkujeBonQ1CcVGMTjL8SLs4tvIMdLE6jJhZYnXMjFUy5pw7JPlLCL/9MdomInFWtRUYrzEw8ydgoOCvrbQ7ST8WtCP0mahY8Kg=="
 kite = KiteApp(enctoken=enctoken)
 
 date_s = datetime.time(hour=9, minute=15)
@@ -42,6 +42,35 @@ if(choice == 1):
         order_type = "PE"
     result = [i for i in y if i['name'] == index_name and i['expiry'] == datetime.date(year, month, day) and i['strike'] == strike_price and i['instrument_type'] == order_type]
     print(result[0]['tradingsymbol'])
+
+    if(index_name_option == 1):
+
+        trigger_price = int(input("Enter trigger price based on the spot price: "))
+
+        while True:
+
+            Index_data = kite.ltp(["NSE:NIFTY 50"])
+            Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
+            print("Nifty 50: ", Nifty50_last_price)
+
+
+            if(Nifty50_last_price>=tgt_price or Nifty50_last_price<=sl_price):
+                kite.place_order(variety=kite.VARIETY_REGULAR,
+                                exchange=kite.EXCHANGE_NFO,
+                                tradingsymbol=position['day'][0]['tradingsymbol'],
+                                transaction_type=kite.TRANSACTION_TYPE_SELL,
+                                quantity=(position['day'][0]['quantity']),
+                                product=product,
+                                order_type=kite.ORDER_TYPE_MARKET,
+                                price=None,
+                                validity=None,
+                                disclosed_quantity=None,
+                                trigger_price=None,
+                                squareoff=None,
+                                stoploss=None,
+                                trailing_stoploss=None,
+                                tag="TradeViaPython")
+                break
 
 
 
