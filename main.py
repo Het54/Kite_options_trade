@@ -5,7 +5,7 @@ import pytz
 
 #Login into Kite
 
-enctoken = "AXEK1m7T3pFrLI1h+4XqzoXDFRoVQRFtRA5zmT4lysQ4KjK9nGtaWvx6WDxbXXS8ZaGBqyvMGmaLTZcBvhq0uQKzkeAqdGc3x3uU6T3YdmGHrt2etqn+Aw=="
+enctoken = "enter your enc token here"
 kite = KiteApp(enctoken=enctoken)
 
 date_s = datetime.time(hour=9, minute=15)
@@ -23,6 +23,7 @@ except:
 
 
 if(choice == 1):
+    print(position)
     y = kite.instruments("NFO")
     index_name_option = int(input("Want to place order in which Index? \n1. Nifty\n2. Banknifty\n3. FinNifty\n"))
     if(index_name_option == 1):
@@ -44,69 +45,70 @@ if(choice == 1):
     print(result[0]['tradingsymbol'])
 
 
-    if(index_name_option == 1):
 
-        if(type == 1):
-            print("Hello")
-        elif(type == 2):
-            trigger_price = float(input("Enter trigger price based on the spot price: "))
+    # if(index_name_option == 1):
 
-            while True:
+    #     if(type == 1):
+    #         print("Hello")
+    #     elif(type == 2):
+    #         trigger_price = float(input("Enter trigger price based on the spot price: "))
 
-                Index_data = kite.ltp(["NSE:NIFTY 50"])
-                Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
-                print("Nifty 50: ", Nifty50_last_price)
+    #         while True:
 
-
-                if(Nifty50_last_price>trigger_price):
-                    kite.place_order(variety=kite.VARIETY_REGULAR,
-                                    exchange=kite.EXCHANGE_NFO,
-                                    tradingsymbol=result[0]['tradingsymbol'],
-                                    transaction_type=kite.TRANSACTION_TYPE_SELL,
-                                    quantity=50,
-                                    product=kite.PRODUCT_NRML,
-                                    order_type=kite.ORDER_TYPE_MARKET,
-                                    price=None,
-                                    validity=None,
-                                    disclosed_quantity=None,
-                                    trigger_price=None,
-                                    squareoff=None,
-                                    stoploss=None,
-                                    trailing_stoploss=None,
-                                    tag="TradeViaPython")
-                    break 
-
-    elif(index_name_option == 3):
-
-        if(type == 1):
-            print("Hello")
-        elif(type == 2):
-            trigger_price = int(input("Enter trigger price based on the spot price: "))
-
-            while True:
-
-                Index_data = kite.ltp(["NSE:NIFTY FIN SERVICE"])
-                Finnifty_last_price = Index_data['NSE:NIFTY FIN SERVICE']['last_price']
-                print("FinNifty: ", Finnifty_last_price)
+    #             Index_data = kite.ltp(["NSE:NIFTY 50"])
+    #             Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
+    #             print("Nifty 50: ", Nifty50_last_price)
 
 
-                if(Finnifty_last_price<trigger_price):
-                    kite.place_order(variety=kite.VARIETY_REGULAR,
-                                    exchange=kite.EXCHANGE_NFO,
-                                    tradingsymbol=result[0]['tradingsymbol'],
-                                    transaction_type=kite.TRANSACTION_TYPE_BUY,
-                                    quantity=40,
-                                    product=kite.PRODUCT_MIS,
-                                    order_type=kite.ORDER_TYPE_MARKET,
-                                    price=None,
-                                    validity=None,
-                                    disclosed_quantity=None,
-                                    trigger_price=None,
-                                    squareoff=None,
-                                    stoploss=None,
-                                    trailing_stoploss=None,
-                                    tag="TradeViaPython")
-                    break 
+    #             if(Nifty50_last_price>trigger_price):
+    #                 kite.place_order(variety=kite.VARIETY_REGULAR,
+    #                                 exchange=kite.EXCHANGE_NFO,
+    #                                 tradingsymbol=result[0]['tradingsymbol'],
+    #                                 transaction_type=kite.TRANSACTION_TYPE_SELL,
+    #                                 quantity=50,
+    #                                 product=kite.PRODUCT_NRML,
+    #                                 order_type=kite.ORDER_TYPE_MARKET,
+    #                                 price=None,
+    #                                 validity=None,
+    #                                 disclosed_quantity=None,
+    #                                 trigger_price=None,
+    #                                 squareoff=None,
+    #                                 stoploss=None,
+    #                                 trailing_stoploss=None,
+    #                                 tag="TradeViaPython")
+    #                 break 
+
+    # elif(index_name_option == 3):
+
+    #     if(type == 1):
+    #         print("Hello")
+    #     elif(type == 2):
+    #         trigger_price = int(input("Enter trigger price based on the spot price: "))
+
+    #         while True:
+
+    #             Index_data = kite.ltp(["NSE:NIFTY FIN SERVICE"])
+    #             Finnifty_last_price = Index_data['NSE:NIFTY FIN SERVICE']['last_price']
+    #             print("FinNifty: ", Finnifty_last_price)
+
+
+    #             if(Finnifty_last_price<trigger_price):
+    #                 kite.place_order(variety=kite.VARIETY_REGULAR,
+    #                                 exchange=kite.EXCHANGE_NFO,
+    #                                 tradingsymbol=result[0]['tradingsymbol'],
+    #                                 transaction_type=kite.TRANSACTION_TYPE_BUY,
+    #                                 quantity=40,
+    #                                 product=kite.PRODUCT_MIS,
+    #                                 order_type=kite.ORDER_TYPE_MARKET,
+    #                                 price=None,
+    #                                 validity=None,
+    #                                 disclosed_quantity=None,
+    #                                 trigger_price=None,
+    #                                 squareoff=None,
+    #                                 stoploss=None,
+    #                                 trailing_stoploss=None,
+    #                                 tag="TradeViaPython")
+    #                 break 
 
 
 
@@ -304,7 +306,170 @@ elif(choice == 2):
                         break 
 
     elif(trade == "sell"):
-        print("Coming soon!!")
+        if(index_in_position == 1):
+
+            if(order_type == 'CE'):
+                while True:
+
+                    Index_data = kite.ltp(["NSE:NIFTY 50"])
+                    Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
+                    print("Nifty 50: ", Nifty50_last_price)
+
+
+                    if(Nifty50_last_price<=tgt_price or Nifty50_last_price>=sl_price):
+                        kite.place_order(variety=kite.VARIETY_REGULAR,
+                                        exchange=kite.EXCHANGE_NFO,
+                                        tradingsymbol=position['day'][0]['tradingsymbol'],
+                                        transaction_type=kite.TRANSACTION_TYPE_BUY,
+                                        quantity=(position['day'][0]['quantity']),
+                                        product=product,
+                                        order_type=kite.ORDER_TYPE_MARKET,
+                                        price=None,
+                                        validity=None,
+                                        disclosed_quantity=None,
+                                        trigger_price=None,
+                                        squareoff=None,
+                                        stoploss=None,
+                                        trailing_stoploss=None,
+                                        tag="TradeViaPython")
+                        break
+            
+            elif(order_type == 'PE'): 
+                while True:
+
+                    Index_data = kite.ltp(["NSE:NIFTY 50"])
+                    Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
+                    print("Nifty 50: ", Nifty50_last_price)
+
+
+                    if(Nifty50_last_price>=tgt_price or Nifty50_last_price<=sl_price):
+                        kite.place_order(variety=kite.VARIETY_REGULAR,
+                                        exchange=kite.EXCHANGE_NFO,
+                                        tradingsymbol=position['day'][0]['tradingsymbol'],
+                                        transaction_type=kite.TRANSACTION_TYPE_BUY,
+                                        quantity=(position['day'][0]['quantity']),
+                                        product=product,
+                                        order_type=kite.ORDER_TYPE_MARKET,
+                                        price=None,
+                                        validity=None,
+                                        disclosed_quantity=None,
+                                        trigger_price=None,
+                                        squareoff=None,
+                                        stoploss=None,
+                                        trailing_stoploss=None,
+                                        tag="TradeViaPython")
+                        break
+
+
+
+        elif(index_in_position == 2):
+
+            if(order_type == 'CE'):
+                while True:
+
+                    Index_data = kite.ltp(["NSE:NIFTY BANK"])
+                    Banknifty_last_price = Index_data['NSE:NIFTY BANK']['last_price']
+                    print("BankNifty: ", Banknifty_last_price)
+
+
+                    if(Banknifty_last_price<=tgt_price or Banknifty_last_price>=sl_price):
+                        kite.place_order(variety=kite.VARIETY_REGULAR,
+                                        exchange=kite.EXCHANGE_NFO,
+                                        tradingsymbol=position['day'][0]['tradingsymbol'],
+                                        transaction_type=kite.TRANSACTION_TYPE_BUY,
+                                        quantity=(position['day'][0]['quantity']),
+                                        product=product,
+                                        order_type=kite.ORDER_TYPE_MARKET,
+                                        price=None,
+                                        validity=None,
+                                        disclosed_quantity=None,
+                                        trigger_price=None,
+                                        squareoff=None,
+                                        stoploss=None,
+                                        trailing_stoploss=None,
+                                        tag="TradeViaPython")
+                        break 
+            
+            elif(order_type == 'PE'):  
+
+                while True:
+
+                    Index_data = kite.ltp(["NSE:NIFTY BANK"])
+                    Banknifty_last_price = Index_data['NSE:NIFTY BANK']['last_price']
+                    print("BankNifty: ", Banknifty_last_price)
+
+
+                    if(Banknifty_last_price>=tgt_price or Banknifty_last_price<=sl_price):
+                        kite.place_order(variety=kite.VARIETY_REGULAR,
+                                        exchange=kite.EXCHANGE_NFO,
+                                        tradingsymbol=position['day'][0]['tradingsymbol'],
+                                        transaction_type=kite.TRANSACTION_TYPE_BUY,
+                                        quantity=(position['day'][0]['quantity']),
+                                        product=product,
+                                        order_type=kite.ORDER_TYPE_MARKET,
+                                        price=None,
+                                        validity=None,
+                                        disclosed_quantity=None,
+                                        trigger_price=None,
+                                        squareoff=None,
+                                        stoploss=None,
+                                        trailing_stoploss=None,
+                                        tag="TradeViaPython")
+                        break
+
+
+        elif(index_in_position == 3):
+
+            if(order_type == 'CE'):
+                while True:
+
+                    Index_data = kite.ltp(["NSE:NIFTY FIN SERVICE"])
+                    Finnifty_last_price = Index_data['NSE:NIFTY FIN SERVICE']['last_price']
+                    print("FinNifty: ", Finnifty_last_price)
+
+
+                    if(Finnifty_last_price<=tgt_price or Finnifty_last_price>=sl_price):
+                        kite.place_order(variety=kite.VARIETY_REGULAR,
+                                        exchange=kite.EXCHANGE_NFO,
+                                        tradingsymbol=position['day'][0]['tradingsymbol'],
+                                        transaction_type=kite.TRANSACTION_TYPE_BUY,
+                                        quantity=(position['day'][0]['quantity']),
+                                        product=product,
+                                        order_type=kite.ORDER_TYPE_MARKET,
+                                        price=None,
+                                        validity=None,
+                                        disclosed_quantity=None,
+                                        trigger_price=None,
+                                        squareoff=None,
+                                        stoploss=None,
+                                        trailing_stoploss=None,
+                                        tag="TradeViaPython")
+                        break 
+            elif(order_type == 'PE'):  
+                while True:
+
+                    Index_data = kite.ltp(["NSE:NIFTY FIN SERVICE"])
+                    Finnifty_last_price = Index_data['NSE:NIFTY FIN SERVICE']['last_price']
+                    print("FinNifty: ", Finnifty_last_price)
+
+
+                    if(Finnifty_last_price>=tgt_price or Finnifty_last_price<=sl_price):
+                        kite.place_order(variety=kite.VARIETY_REGULAR,
+                                        exchange=kite.EXCHANGE_NFO,
+                                        tradingsymbol=position['day'][0]['tradingsymbol'],
+                                        transaction_type=kite.TRANSACTION_TYPE_BUY,
+                                        quantity=(position['day'][0]['quantity']),
+                                        product=product,
+                                        order_type=kite.ORDER_TYPE_MARKET,
+                                        price=None,
+                                        validity=None,
+                                        disclosed_quantity=None,
+                                        trigger_price=None,
+                                        squareoff=None,
+                                        stoploss=None,
+                                        trailing_stoploss=None,
+                                        tag="TradeViaPython")
+                        break 
 
 
 else:
