@@ -5,7 +5,7 @@ import pytz
 
 #Login into Kite
 
-enctoken = "enter your enc token here"
+enctoken = "urcbOfy6DTcqgs7KMeTugf7MBd8REbqEjpGMLvKDbqlm1i3ZiEgiHI/VRHwsOIqoE4V6Q01DTXA/1GOhavk2k4cU1VH8crcdmnoSfpEqlD+hzyeU9ipvVA=="
 kite = KiteApp(enctoken=enctoken)
 
 date_s = datetime.time(hour=9, minute=15)
@@ -189,21 +189,7 @@ elif(choice == 2):
 
 
                     if(Nifty50_last_price>=tgt_price or Nifty50_last_price<=sl_price):
-                        kite.place_order(variety=kite.VARIETY_REGULAR,
-                                        exchange=kite.EXCHANGE_NFO,
-                                        tradingsymbol=position['day'][0]['tradingsymbol'],
-                                        transaction_type=kite.TRANSACTION_TYPE_SELL,
-                                        quantity=(position['day'][0]['quantity']),
-                                        product=product,
-                                        order_type=kite.ORDER_TYPE_MARKET,
-                                        price=None,
-                                        validity=None,
-                                        disclosed_quantity=None,
-                                        trigger_price=None,
-                                        squareoff=None,
-                                        stoploss=None,
-                                        trailing_stoploss=None,
-                                        tag="TradeViaPython")
+                        Buy_Order()
                         break
             
             elif(order_type == 'PE'): 
@@ -215,21 +201,7 @@ elif(choice == 2):
 
 
                     if(Nifty50_last_price<=tgt_price or Nifty50_last_price>=sl_price):
-                        kite.place_order(variety=kite.VARIETY_REGULAR,
-                                        exchange=kite.EXCHANGE_NFO,
-                                        tradingsymbol=position['day'][0]['tradingsymbol'],
-                                        transaction_type=kite.TRANSACTION_TYPE_SELL,
-                                        quantity=(position['day'][0]['quantity']),
-                                        product=product,
-                                        order_type=kite.ORDER_TYPE_MARKET,
-                                        price=None,
-                                        validity=None,
-                                        disclosed_quantity=None,
-                                        trigger_price=None,
-                                        squareoff=None,
-                                        stoploss=None,
-                                        trailing_stoploss=None,
-                                        tag="TradeViaPython")
+                        Buy_Order()
                         break
 
 
@@ -299,21 +271,7 @@ elif(choice == 2):
 
 
                     if(Nifty50_last_price<=tgt_price or Nifty50_last_price>=sl_price):
-                        kite.place_order(variety=kite.VARIETY_REGULAR,
-                                        exchange=kite.EXCHANGE_NFO,
-                                        tradingsymbol=position['day'][0]['tradingsymbol'],
-                                        transaction_type=kite.TRANSACTION_TYPE_BUY,
-                                        quantity=(position['day'][0]['quantity']),
-                                        product=product,
-                                        order_type=kite.ORDER_TYPE_MARKET,
-                                        price=None,
-                                        validity=None,
-                                        disclosed_quantity=None,
-                                        trigger_price=None,
-                                        squareoff=None,
-                                        stoploss=None,
-                                        trailing_stoploss=None,
-                                        tag="TradeViaPython")
+                        Sell_Order()
                         break
             
             elif(order_type == 'PE'): 
@@ -325,21 +283,7 @@ elif(choice == 2):
 
 
                     if(Nifty50_last_price>=tgt_price or Nifty50_last_price<=sl_price):
-                        kite.place_order(variety=kite.VARIETY_REGULAR,
-                                        exchange=kite.EXCHANGE_NFO,
-                                        tradingsymbol=position['day'][0]['tradingsymbol'],
-                                        transaction_type=kite.TRANSACTION_TYPE_BUY,
-                                        quantity=(position['day'][0]['quantity']),
-                                        product=product,
-                                        order_type=kite.ORDER_TYPE_MARKET,
-                                        price=None,
-                                        validity=None,
-                                        disclosed_quantity=None,
-                                        trigger_price=None,
-                                        squareoff=None,
-                                        stoploss=None,
-                                        trailing_stoploss=None,
-                                        tag="TradeViaPython")
+                        Sell_Order()
                         break
 
 
