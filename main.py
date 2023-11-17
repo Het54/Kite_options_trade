@@ -62,25 +62,25 @@ except:
 
 if(choice == 1):
     print(position)
-    y = kite.instruments("NFO")
-    index_name_option = int(input("Want to place order in which Index? \n1. Nifty\n2. Banknifty\n3. FinNifty\n"))
-    if(index_name_option == 1):
-        index_name = "NIFTY"
-    elif(index_name_option == 2):
-        index_name = "BANKNIFTY"
-    elif(index_name_option == 3):
-        index_name = "FINNIFTY"
-    year = int(input("Enter Year of Expiry: "))
-    month = int(input("Enter Month of Expiry: "))
-    day = int(input("Enter Day of Expiry: "))
-    strike_price = int(input("Enter Strike Price: "))
-    type = int(input("Enter type of the order \n1. CE\n2. PE\n"))
-    if(type == 1):
-        order_type = "CE"
-    else:
-        order_type = "PE"
-    result = [i for i in y if i['name'] == index_name and i['expiry'] == datetime.date(year, month, day) and i['strike'] == strike_price and i['instrument_type'] == order_type]
-    print(result[0]['tradingsymbol'])
+    # y = kite.instruments("NFO")
+    # index_name_option = int(input("Want to place order in which Index? \n1. Nifty\n2. Banknifty\n3. FinNifty\n"))
+    # if(index_name_option == 1):
+    #     index_name = "NIFTY"
+    # elif(index_name_option == 2):
+    #     index_name = "BANKNIFTY"
+    # elif(index_name_option == 3):
+    #     index_name = "FINNIFTY"
+    # year = int(input("Enter Year of Expiry: "))
+    # month = int(input("Enter Month of Expiry: "))
+    # day = int(input("Enter Day of Expiry: "))
+    # strike_price = int(input("Enter Strike Price: "))
+    # type = int(input("Enter type of the order \n1. CE\n2. PE\n"))
+    # if(type == 1):
+    #     order_type = "CE"
+    # else:
+    #     order_type = "PE"
+    # result = [i for i in y if i['name'] == index_name and i['expiry'] == datetime.date(year, month, day) and i['strike'] == strike_price and i['instrument_type'] == order_type]
+    # print(result[0]['tradingsymbol'])
 
 
 
@@ -157,8 +157,8 @@ elif(choice == 2):
         print("Only Integer values are allowed!!")  
     
     try:
-        sl_price = int(input("Stop Loss Price: "))
-        tgt_price = int(input("Target Price: "))
+        sl_price = float(input("Stop Loss Price: "))
+        tgt_price = float(input("Target Price: "))
     except:
         print("Only Integer values are allowed!!")   
     if(position['day'][0]['buy_quantity'] == 0):
