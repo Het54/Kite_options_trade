@@ -61,8 +61,9 @@ except:
 
 
 if(choice == 1):
-    print(position)
+
     y = kite.instruments("NFO")
+
     index_name_option = int(input("Want to place order in which Index? \n1. Nifty\n2. Banknifty\n3. FinNifty\n"))
     if(index_name_option == 1):
         index_name = "NIFTY"
@@ -70,29 +71,43 @@ if(choice == 1):
         index_name = "BANKNIFTY"
     elif(index_name_option == 3):
         index_name = "FINNIFTY"
+
     year = int(input("Enter Year of Expiry: "))
+
     month = int(input("Enter Month of Expiry: "))
+
     day = int(input("Enter Day of Expiry: "))
+
     strike_price = int(input("Enter Strike Price: "))
+
+    Option_type = int(input("Enter type of the order \n1. CE\n2. PE\n"))
+    if(Option_type == 1):
+        op_type = "CE"
+    elif(Option_type == 2):
+        op_type = "PE"
+
     t_type = int(input("Do you want to buy or sell? \n1. Buy\n2. Sell\n"))
     if(t_type == 1):
         trade_type = "Buy"
-    else:
+    elif(t_type == 2):
         trade_type = "Sell"
     order_quantity  = int(input("Enter quantity: "))
-    type = int(input("Enter type of the order \n1. CE\n2. PE\n"))
-    if(type == 1):
-        order_type = "CE"
-    else:
-        order_type = "PE"
-    result = [i for i in y if i['name'] == index_name and i['expiry'] == datetime.date(year, month, day) and i['strike'] == strike_price and i['instrument_type'] == order_type]
+
+    order_type = int(input("What is your order type? \n1. MIS\n2. NRML\n"))
+    if(order_type == 1):
+        or_type = kite.PRODUCT_MIS
+    elif(order_type == 2):
+        or_type = kite.PRODUCT_NRML
+    order_quantity  = int(input("Enter quantity: "))
+
+    result = [i for i in y if i['name'] == index_name and i['expiry'] == datetime.date(year, month, day) and i['strike'] == strike_price and i['instrument_type'] == op_type]
     print(result[0]['tradingsymbol'])
 
 
     # Option Selected: Nifty
     if(index_name_option == 1):
 
-        if(type == 1):
+        if(Option_type == 1):
             if(trade_type == "Buy"):
                 trigger_price = float(input("Enter trigger price based on the spot price: "))
 
@@ -109,7 +124,7 @@ if(choice == 1):
                                         tradingsymbol=result[0]['tradingsymbol'],
                                         transaction_type=kite.TRANSACTION_TYPE_SELL,
                                         quantity=order_quantity,
-                                        product=kite.PRODUCT_NRML,
+                                        product=or_type,
                                         order_type=kite.ORDER_TYPE_MARKET,
                                         price=None,
                                         validity=None,
@@ -136,7 +151,7 @@ if(choice == 1):
                                         tradingsymbol=result[0]['tradingsymbol'],
                                         transaction_type=kite.TRANSACTION_TYPE_SELL,
                                         quantity=order_quantity,
-                                        product=kite.PRODUCT_NRML,
+                                        product=or_type,
                                         order_type=kite.ORDER_TYPE_MARKET,
                                         price=None,
                                         validity=None,
@@ -149,7 +164,7 @@ if(choice == 1):
                         break
 
 
-        elif(type == 2):
+        elif(Option_type == 2):
             if(trade_type == "Buy"):
                 trigger_price = float(input("Enter trigger price based on the spot price: "))
 
@@ -166,7 +181,7 @@ if(choice == 1):
                                         tradingsymbol=result[0]['tradingsymbol'],
                                         transaction_type=kite.TRANSACTION_TYPE_SELL,
                                         quantity=order_quantity,
-                                        product=kite.PRODUCT_NRML,
+                                        product=or_type,
                                         order_type=kite.ORDER_TYPE_MARKET,
                                         price=None,
                                         validity=None,
@@ -193,7 +208,7 @@ if(choice == 1):
                                         tradingsymbol=result[0]['tradingsymbol'],
                                         transaction_type=kite.TRANSACTION_TYPE_SELL,
                                         quantity=order_quantity,
-                                        product=kite.PRODUCT_NRML,
+                                        product=or_type,
                                         order_type=kite.ORDER_TYPE_MARKET,
                                         price=None,
                                         validity=None,
@@ -209,7 +224,7 @@ if(choice == 1):
     # Option Selected: BankNifty
     elif(index_name_option == 2):
 
-        if(type == 1):
+        if(Option_type == 1):
             if(trade_type == "Buy"):
                 trigger_price = int(input("Enter trigger price based on the spot price: "))
 
@@ -226,7 +241,7 @@ if(choice == 1):
                                         tradingsymbol=result[0]['tradingsymbol'],
                                         transaction_type=kite.TRANSACTION_TYPE_BUY,
                                         quantity=order_quantity,
-                                        product=kite.PRODUCT_MIS,
+                                        product=or_type,
                                         order_type=kite.ORDER_TYPE_MARKET,
                                         price=None,
                                         validity=None,
@@ -253,7 +268,7 @@ if(choice == 1):
                                         tradingsymbol=result[0]['tradingsymbol'],
                                         transaction_type=kite.TRANSACTION_TYPE_BUY,
                                         quantity=order_quantity,
-                                        product=kite.PRODUCT_MIS,
+                                        product=or_type,
                                         order_type=kite.ORDER_TYPE_MARKET,
                                         price=None,
                                         validity=None,
@@ -267,7 +282,7 @@ if(choice == 1):
 
 
 
-        elif(type == 2):
+        elif(Option_type == 2):
             if(trade_type == "Buy"):
                 trigger_price = int(input("Enter trigger price based on the spot price: "))
 
@@ -284,7 +299,7 @@ if(choice == 1):
                                         tradingsymbol=result[0]['tradingsymbol'],
                                         transaction_type=kite.TRANSACTION_TYPE_BUY,
                                         quantity=order_quantity,
-                                        product=kite.PRODUCT_MIS,
+                                        product=or_type,
                                         order_type=kite.ORDER_TYPE_MARKET,
                                         price=None,
                                         validity=None,
@@ -311,7 +326,7 @@ if(choice == 1):
                                         tradingsymbol=result[0]['tradingsymbol'],
                                         transaction_type=kite.TRANSACTION_TYPE_BUY,
                                         quantity=order_quantity,
-                                        product=kite.PRODUCT_MIS,
+                                        product=or_type,
                                         order_type=kite.ORDER_TYPE_MARKET,
                                         price=None,
                                         validity=None,
@@ -327,7 +342,7 @@ if(choice == 1):
     # Option Selected: FinNifty
     elif(index_name_option == 3):
 
-        if(type == 1):
+        if(Option_type == 1):
             if(trade_type == "Buy"):
                 trigger_price = int(input("Enter trigger price based on the spot price: "))
 
@@ -344,7 +359,7 @@ if(choice == 1):
                                         tradingsymbol=result[0]['tradingsymbol'],
                                         transaction_type=kite.TRANSACTION_TYPE_BUY,
                                         quantity=order_quantity,
-                                        product=kite.PRODUCT_MIS,
+                                        product=or_type,
                                         order_type=kite.ORDER_TYPE_MARKET,
                                         price=None,
                                         validity=None,
@@ -371,7 +386,7 @@ if(choice == 1):
                                         tradingsymbol=result[0]['tradingsymbol'],
                                         transaction_type=kite.TRANSACTION_TYPE_BUY,
                                         quantity=order_quantity,
-                                        product=kite.PRODUCT_MIS,
+                                        product=or_type,
                                         order_type=kite.ORDER_TYPE_MARKET,
                                         price=None,
                                         validity=None,
@@ -385,7 +400,7 @@ if(choice == 1):
 
 
 
-        elif(type == 2):
+        elif(Option_type == 2):
             if(trade_type == "Buy"):
                 trigger_price = int(input("Enter trigger price based on the spot price: "))
 
@@ -402,7 +417,7 @@ if(choice == 1):
                                         tradingsymbol=result[0]['tradingsymbol'],
                                         transaction_type=kite.TRANSACTION_TYPE_BUY,
                                         quantity=order_quantity,
-                                        product=kite.PRODUCT_MIS,
+                                        product=or_type,
                                         order_type=kite.ORDER_TYPE_MARKET,
                                         price=None,
                                         validity=None,
@@ -429,7 +444,7 @@ if(choice == 1):
                                         tradingsymbol=result[0]['tradingsymbol'],
                                         transaction_type=kite.TRANSACTION_TYPE_BUY,
                                         quantity=order_quantity,
-                                        product=kite.PRODUCT_MIS,
+                                        product=or_type,
                                         order_type=kite.ORDER_TYPE_MARKET,
                                         price=None,
                                         validity=None,
@@ -466,14 +481,14 @@ elif(choice == 2):
         product = kite.PRODUCT_NRML
 
     x = position['day'][0]['tradingsymbol']
-    order_type = x[-2:]
-    print(order_type)
+    op_type = x[-2:]
+    print(op_type)
     
     if(trade == "buy"):
 
         if(index_in_position == 1):
 
-            if(order_type == 'CE'):
+            if(op_type == 'CE'):
                 while True:
 
                     Index_data = kite.ltp(["NSE:NIFTY 50"])
@@ -485,7 +500,7 @@ elif(choice == 2):
                         Buy_Order()
                         break
             
-            elif(order_type == 'PE'): 
+            elif(op_type == 'PE'): 
                 while True:
 
                     Index_data = kite.ltp(["NSE:NIFTY 50"])
@@ -501,7 +516,7 @@ elif(choice == 2):
 
         elif(index_in_position == 2):
 
-            if(order_type == 'CE'):
+            if(op_type == 'CE'):
                 while True:
 
                     Index_data = kite.ltp(["NSE:NIFTY BANK"])
@@ -513,7 +528,7 @@ elif(choice == 2):
                         Buy_Order()
                         break 
             
-            elif(order_type == 'PE'):  
+            elif(op_type == 'PE'):  
 
                 while True:
 
@@ -529,7 +544,7 @@ elif(choice == 2):
 
         elif(index_in_position == 3):
 
-            if(order_type == 'CE'):
+            if(op_type == 'CE'):
                 while True:
 
                     Index_data = kite.ltp(["NSE:NIFTY FIN SERVICE"])
@@ -540,7 +555,7 @@ elif(choice == 2):
                     if(Finnifty_last_price>=tgt_price or Finnifty_last_price<=sl_price):
                         Buy_Order()
                         break 
-            elif(order_type == 'PE'):  
+            elif(op_type == 'PE'):  
                 while True:
 
                     Index_data = kite.ltp(["NSE:NIFTY FIN SERVICE"])
@@ -555,7 +570,7 @@ elif(choice == 2):
     elif(trade == "sell"):
         if(index_in_position == 1):
 
-            if(order_type == 'CE'):
+            if(op_type == 'CE'):
                 while True:
 
                     Index_data = kite.ltp(["NSE:NIFTY 50"])
@@ -567,7 +582,7 @@ elif(choice == 2):
                         Sell_Order()
                         break
             
-            elif(order_type == 'PE'): 
+            elif(op_type == 'PE'): 
                 while True:
 
                     Index_data = kite.ltp(["NSE:NIFTY 50"])
@@ -583,7 +598,7 @@ elif(choice == 2):
 
         elif(index_in_position == 2):
 
-            if(order_type == 'CE'):
+            if(op_type == 'CE'):
                 while True:
 
                     Index_data = kite.ltp(["NSE:NIFTY BANK"])
@@ -595,7 +610,7 @@ elif(choice == 2):
                         Sell_Order()
                         break 
             
-            elif(order_type == 'PE'):  
+            elif(op_type == 'PE'):  
 
                 while True:
 
@@ -611,7 +626,7 @@ elif(choice == 2):
 
         elif(index_in_position == 3):
 
-            if(order_type == 'CE'):
+            if(op_type == 'CE'):
                 while True:
 
                     Index_data = kite.ltp(["NSE:NIFTY FIN SERVICE"])
@@ -622,7 +637,7 @@ elif(choice == 2):
                     if(Finnifty_last_price<=tgt_price or Finnifty_last_price>=sl_price):
                         Sell_Order()
                         break 
-            elif(order_type == 'PE'):  
+            elif(op_type == 'PE'):  
                 while True:
 
                     Index_data = kite.ltp(["NSE:NIFTY FIN SERVICE"])
