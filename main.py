@@ -19,10 +19,10 @@ position = kite.positions()
 def Buy_Order(t_symbol, quantity, product_type):
   kite.place_order(variety=kite.VARIETY_REGULAR,
                     exchange=kite.EXCHANGE_NFO,
-                    tradingsymbol=position['day'][0]['tradingsymbol'],
+                    tradingsymbol=t_symbol,
                     transaction_type=kite.TRANSACTION_TYPE_SELL,
-                    quantity=(position['day'][0]['quantity']),
-                    product=product,
+                    quantity=quantity,
+                    product=product_type,
                     order_type=kite.ORDER_TYPE_MARKET,
                     price=None,
                     validity=None,
@@ -34,13 +34,13 @@ def Buy_Order(t_symbol, quantity, product_type):
                     tag="TradeViaPython")
   
 #Function for order placement for Sell
-def Sell_Order():
+def Sell_Order(t_symbol, quantity, product_type):
     kite.place_order(variety=kite.VARIETY_REGULAR,
                     exchange=kite.EXCHANGE_NFO,
-                    tradingsymbol=position['day'][0]['tradingsymbol'],
+                    tradingsymbol=t_symbol,
                     transaction_type=kite.TRANSACTION_TYPE_BUY,
-                    quantity=(position['day'][0]['quantity']),
-                    product=product,
+                    quantity=quantity,
+                    product=product_type,
                     order_type=kite.ORDER_TYPE_MARKET,
                     price=None,
                     validity=None,
