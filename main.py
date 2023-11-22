@@ -54,7 +54,7 @@ def Sell_Order(t_symbol, quantity, product_type):
 
 
 try:
-    choice = int(input("1. Place a new trade \n2. Add SL and Tgt to the existing position\n"))
+    choice = int(input("1. Place a new trade \n2. Add SL and Tgt to the existing position \n3. Testing\n"))
 except:
     print("Only Integer values are allowed!!")
 
@@ -307,7 +307,8 @@ elif(choice == 2):
         tgt_price = float(input("Target Price: "))
     except:
         print("Only Integer values are allowed!!")   
-    if(position['day'][0]['buy_quantity'] == 0):
+
+    if(position['day'][0]['quantity'] < 0):
         trade = "sell"
     else:
         trade = "buy"
@@ -320,7 +321,7 @@ elif(choice == 2):
 
     t_symbol = position['day'][0]['tradingsymbol']
 
-    quantity = position['day'][0]['quantity']
+    quantity = abs(position['day'][0]['quantity'])
 
     x = position['day'][0]['tradingsymbol']
     op_type = x[-2:]
@@ -491,6 +492,13 @@ elif(choice == 2):
                         Buy_Order(t_symbol, quantity, product_type)
                         break 
 
+elif(choice == 3):
+    if(position['day'][0]['quantity'] < 0):
+        trade = "sell"
+    else:
+        trade = "buy"
+    print(position['day'][0])
+    print(trade)
 
 else:
     print("You can only choose from above options!")    
