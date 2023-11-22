@@ -20,7 +20,7 @@ def Buy_Order(t_symbol, quantity, product_type):
   kite.place_order(variety=kite.VARIETY_REGULAR,
                     exchange=kite.EXCHANGE_NFO,
                     tradingsymbol=t_symbol,
-                    transaction_type=kite.TRANSACTION_TYPE_SELL,
+                    transaction_type=kite.TRANSACTION_TYPE_BUY,
                     quantity=quantity,
                     product=product_type,
                     order_type=kite.ORDER_TYPE_MARKET,
@@ -38,7 +38,7 @@ def Sell_Order(t_symbol, quantity, product_type):
     kite.place_order(variety=kite.VARIETY_REGULAR,
                     exchange=kite.EXCHANGE_NFO,
                     tradingsymbol=t_symbol,
-                    transaction_type=kite.TRANSACTION_TYPE_BUY,
+                    transaction_type=kite.TRANSACTION_TYPE_SELL,
                     quantity=quantity,
                     product=product_type,
                     order_type=kite.ORDER_TYPE_MARKET,
@@ -91,7 +91,6 @@ if(choice == 1):
         trade_type = "Buy"
     elif(t_type == 2):
         trade_type = "Sell"
-    order_quantity  = int(input("Enter quantity: "))
 
     order_type = int(input("What is your order type? \n1. MIS\n2. NRML\n"))
     if(order_type == 1):
@@ -340,7 +339,7 @@ elif(choice == 2):
 
 
                     if(Nifty50_last_price>=tgt_price or Nifty50_last_price<=sl_price):
-                        Buy_Order(t_symbol, quantity, product_type)
+                        Sell_Order(t_symbol, quantity, product_type)
                         break
             
             elif(op_type == 'PE'): 
@@ -352,7 +351,7 @@ elif(choice == 2):
 
 
                     if(Nifty50_last_price<=tgt_price or Nifty50_last_price>=sl_price):
-                        Buy_Order(t_symbol, quantity, product_type)
+                        Sell_Order(t_symbol, quantity, product_type)
                         break
 
 
@@ -368,7 +367,7 @@ elif(choice == 2):
 
 
                     if(Banknifty_last_price>=tgt_price or Banknifty_last_price<=sl_price):
-                        Buy_Order(t_symbol, quantity, product_type)
+                        Sell_Order(t_symbol, quantity, product_type)
                         break 
             
             elif(op_type == 'PE'):  
@@ -381,7 +380,7 @@ elif(choice == 2):
 
 
                     if(Banknifty_last_price<=tgt_price or Banknifty_last_price>=sl_price):
-                        Buy_Order(t_symbol, quantity, product_type)
+                        Sell_Order(t_symbol, quantity, product_type)
                         break
 
 
@@ -396,7 +395,7 @@ elif(choice == 2):
 
 
                     if(Finnifty_last_price>=tgt_price or Finnifty_last_price<=sl_price):
-                        Buy_Order(t_symbol, quantity, product_type)
+                        Sell_Order(t_symbol, quantity, product_type)
                         break 
             elif(op_type == 'PE'):  
                 while True:
@@ -407,7 +406,7 @@ elif(choice == 2):
 
 
                     if(Finnifty_last_price<=tgt_price or Finnifty_last_price>=sl_price):
-                        Buy_Order(t_symbol, quantity, product_type)
+                        Sell_Order(t_symbol, quantity, product_type)
                         break 
 
     elif(trade == "sell"):
@@ -422,7 +421,7 @@ elif(choice == 2):
 
 
                     if(Nifty50_last_price<=tgt_price or Nifty50_last_price>=sl_price):
-                        Sell_Order(t_symbol, quantity, product_type)
+                        Buy_Order(t_symbol, quantity, product_type)
                         break
             
             elif(op_type == 'PE'): 
@@ -434,7 +433,7 @@ elif(choice == 2):
 
 
                     if(Nifty50_last_price>=tgt_price or Nifty50_last_price<=sl_price):
-                        Sell_Order(t_symbol, quantity, product_type)
+                        Buy_Order(t_symbol, quantity, product_type)
                         break
 
 
@@ -450,7 +449,7 @@ elif(choice == 2):
 
 
                     if(Banknifty_last_price<=tgt_price or Banknifty_last_price>=sl_price):
-                        Sell_Order(t_symbol, quantity, product_type)
+                        Buy_Order(t_symbol, quantity, product_type)
                         break 
             
             elif(op_type == 'PE'):  
@@ -463,7 +462,7 @@ elif(choice == 2):
 
 
                     if(Banknifty_last_price>=tgt_price or Banknifty_last_price<=sl_price):
-                        Sell_Order(t_symbol, quantity, product_type)
+                        Buy_Order(t_symbol, quantity, product_type)
                         break
 
 
@@ -478,7 +477,7 @@ elif(choice == 2):
 
 
                     if(Finnifty_last_price<=tgt_price or Finnifty_last_price>=sl_price):
-                        Sell_Order(t_symbol, quantity, product_type)
+                        Buy_Order(t_symbol, quantity, product_type)
                         break 
             elif(op_type == 'PE'):  
                 while True:
@@ -489,7 +488,7 @@ elif(choice == 2):
 
 
                     if(Finnifty_last_price>=tgt_price or Finnifty_last_price<=sl_price):
-                        Sell_Order(t_symbol, quantity, product_type)
+                        Buy_Order(t_symbol, quantity, product_type)
                         break 
 
 
