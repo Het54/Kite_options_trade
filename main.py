@@ -5,7 +5,7 @@ import pytz
 
 #Login into Kite
 
-enctoken = "enter your enc token here"
+enctoken = "enter you enc token here"
 kite = KiteApp(enctoken=enctoken)
 
 date_s = datetime.time(hour=9, minute=15)
@@ -31,7 +31,7 @@ def Buy_Order(t_symbol, quantity, product_type):
                     squareoff=None,
                     stoploss=None,
                     trailing_stoploss=None,
-                    tag="TradeViaPython")
+                    tag="Buy_order")
   
 #Function for order placement for Sell
 def Sell_Order(t_symbol, quantity, product_type):
@@ -49,7 +49,7 @@ def Sell_Order(t_symbol, quantity, product_type):
                     squareoff=None,
                     stoploss=None,
                     trailing_stoploss=None,
-                    tag="TradeViaPython")
+                    tag="Sell_oreder")
 
 
 
@@ -493,12 +493,12 @@ elif(choice == 2):
                         break 
 
 elif(choice == 3):
-    if(position['day'][0]['quantity'] < 0):
-        trade = "sell"
-    else:
-        trade = "buy"
+    while True:
+        Index_data = kite.ltp(["NSE:NIFTY BANK"])
+        print(Index_data)
+    
     print(position['day'][0])
-    print(trade)
+    
 
 else:
     print("You can only choose from above options!")    
