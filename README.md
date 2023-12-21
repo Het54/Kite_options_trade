@@ -23,8 +23,17 @@ The algorithm offers two primary feature options:
 
 1. **Obtain the Enc Token:**
     - Access the dashboard of your logged-in Kite platform and navigate to inspect element.
+      
+      <img width="1470" alt="Screen Shot 2023-12-21 at 12 29 01 PM" src="https://github.com/Het54/Kite_options_trade/assets/65643485/bb653f57-e54a-41b7-b5c7-03671a674fee">
+      
     - Go to the Networks tab and perform command+R.
+      
+      <img width="1227" alt="Screen Shot 2023-12-21 at 1 12 22 PM" src="https://github.com/Het54/Kite_options_trade/assets/65643485/784aaa61-4209-419a-b2da-2a88c7fc9216">
+      
     - Locate your enc token under any one category. This token enables the algorithm to run within that particular session.
+      
+      <img width="935" alt="Screen Shot 2023-12-21 at 1 38 00 PM" src="https://github.com/Het54/Kite_options_trade/assets/65643485/71c2ede2-c4f6-4e59-b365-d84f25665798">
+      
     - Keep this session active in your browser.
 
 2. **Execute the Algorithm:**
