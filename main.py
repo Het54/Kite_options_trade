@@ -5,7 +5,7 @@ import pytz
 
 #Login into Kite
 
-enctoken = "enter you enc token here"
+enctoken = "enter your enc token here"
 kite = KiteApp(enctoken=enctoken)
 
 date_s = datetime.time(hour=9, minute=15)
@@ -307,25 +307,27 @@ elif(choice == 2):
         tgt_price = float(input("Target Price: "))
     except:
         print("Only Integer values are allowed!!")   
+    
+    position_length = len(position['day'])
 
-    if(position['day'][0]['quantity'] < 0):
+    if(position['day'][position_length-1]['quantity'] < 0):
         trade = "sell"
     else:
         trade = "buy"
 
-    product_type = (position['day'][0]['product'])
+    product_type = (position['day'][position_length-1]['product'])
     if(product_type == "MIS"):
         product_type = kite.PRODUCT_MIS
     else:
         product_type = kite.PRODUCT_NRML
 
-    t_symbol = position['day'][0]['tradingsymbol']
+    t_symbol = position['day'][position_length-1]['tradingsymbol']
 
-    quantity = abs(position['day'][0]['quantity'])
+    quantity = abs(position['day'][position_length-1]['quantity'])
 
-    x = position['day'][0]['tradingsymbol']
+    x = position['day'][position_length-1]['tradingsymbol']
     op_type = x[-2:]
-    print(op_type)
+    print(x)
     
     if(trade == "buy"):
 
@@ -493,11 +495,9 @@ elif(choice == 2):
                         break 
 
 elif(choice == 3):
-    while True:
-        Index_data = kite.ltp(["NSE:NIFTY BANK"])
-        print(Index_data)
-    
-    print(position['day'][0])
+    position_length = len(position['day'])
+    x = position['day'][position_length-1]['tradingsymbol']
+    print(x)
     
 
 else:
