@@ -306,28 +306,34 @@ elif(choice == 2):
         sl_price = float(input("Stop Loss Price: "))
         tgt_price = float(input("Target Price: "))
     except:
-        print("Only Integer values are allowed!!")   
-    
-    position_length = len(position['day'])
+        print("Only Integer values are allowed!!")  
 
-    if(position['day'][position_length-1]['quantity'] < 0):
+    print("\nPositions: ")
+    position_length = len(position['day'])
+    for i in range(0,position_length):
+        x = position['day'][i]['tradingsymbol']
+        print(i,x) 
+    
+    selected_postion = int(input("\nWhich Position you would like to add Sl and Tgt to? \n"))
+
+    if(position['day'][selected_postion]['quantity'] < 0):
         trade = "sell"
     else:
         trade = "buy"
 
-    product_type = (position['day'][position_length-1]['product'])
+    product_type = (position['day'][selected_postion]['product'])
     if(product_type == "MIS"):
         product_type = kite.PRODUCT_MIS
     else:
         product_type = kite.PRODUCT_NRML
 
-    t_symbol = position['day'][position_length-1]['tradingsymbol']
+    t_symbol = position['day'][selected_postion]['tradingsymbol']
 
-    quantity = abs(position['day'][position_length-1]['quantity'])
+    quantity = abs(position['day'][selected_postion]['quantity'])
 
-    x = position['day'][position_length-1]['tradingsymbol']
-    op_type = x[-2:]
-    print(x)
+    selected_pos = position['day'][selected_postion]['tradingsymbol']
+    op_type = selected_pos[-2:]
+    print(selected_pos)
     
     if(trade == "buy"):
 
@@ -351,6 +357,8 @@ elif(choice == 2):
                     Index_data = kite.ltp(["NSE:NIFTY 50"])
                     Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
                     print("Nifty 50: ", Nifty50_last_price)
+
+                    time.sleep(0.01)
 
 
                     if(Nifty50_last_price<=tgt_price or Nifty50_last_price>=sl_price):
@@ -495,9 +503,10 @@ elif(choice == 2):
                         break 
 
 elif(choice == 3):
-    position_length = len(position['day'])
-    x = position['day'][position_length-1]['tradingsymbol']
-    print(x)
+    position_length = len(position)
+    for i in range(0,position_length):
+        x = position['net'][i]['tradingsymbol']
+        print(i,x)
     
 
 else:
