@@ -5,7 +5,7 @@ import pytz
 
 #Login into Kite
 
-enctoken = "enter your enc token here"
+enctoken = "Enter your enc token here"
 kite = KiteApp(enctoken=enctoken)
 
 date_s = datetime.time(hour=9, minute=15)
@@ -118,6 +118,7 @@ if(choice == 1):
                     Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
                     print("Nifty 50: ", Nifty50_last_price)
 
+                    time.sleep(0.10)
 
                     if(Nifty50_last_price>trigger_price):
                         Buy_Order(t_symbol, order_quantity, or_type)
@@ -131,6 +132,7 @@ if(choice == 1):
                     Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
                     print("Nifty 50: ", Nifty50_last_price)
 
+                    time.sleep(0.10)
 
                     if(Nifty50_last_price<trigger_price):
                         Sell_Order(t_symbol, order_quantity, or_type)
@@ -147,6 +149,7 @@ if(choice == 1):
                     Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
                     print("Nifty 50: ", Nifty50_last_price)
 
+                    time.sleep(0.10)
 
                     if(Nifty50_last_price<trigger_price):
                         Buy_Order(t_symbol, order_quantity, or_type)
@@ -161,6 +164,7 @@ if(choice == 1):
                     Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
                     print("Nifty 50: ", Nifty50_last_price)
 
+                    time.sleep(0.10)
 
                     if(Nifty50_last_price>trigger_price):
                         Sell_Order(t_symbol, order_quantity, or_type)
@@ -172,7 +176,7 @@ if(choice == 1):
 
         if(Option_type == 1):
             if(trade_type == "Buy"):
-                trigger_price = int(input("Enter trigger price based on the spot price: "))
+                trigger_price = float(input("Enter trigger price based on the spot price: "))
 
                 while True:
 
@@ -180,13 +184,14 @@ if(choice == 1):
                     Banknifty_last_price = Index_data['NSE:NIFTY BANK']['last_price']
                     print("BankNifty: ", Banknifty_last_price)
 
+                    time.sleep(0.10)
 
                     if(Banknifty_last_price>trigger_price):
                         Buy_Order(t_symbol, order_quantity, or_type)
                         break 
 
             elif(trade_type == "Sell"):
-                trigger_price = int(input("Enter trigger price based on the spot price: "))
+                trigger_price = float(input("Enter trigger price based on the spot price: "))
 
                 while True:
 
@@ -194,6 +199,7 @@ if(choice == 1):
                     Banknifty_last_price = Index_data['NSE:NIFTY BANK']['last_price']
                     print("BankNifty: ", Banknifty_last_price)
 
+                    time.sleep(0.10)
 
                     if(Banknifty_last_price<trigger_price):
                         Sell_Order(t_symbol, order_quantity, or_type)
@@ -203,7 +209,7 @@ if(choice == 1):
 
         elif(Option_type == 2):
             if(trade_type == "Buy"):
-                trigger_price = int(input("Enter trigger price based on the spot price: "))
+                trigger_price = float(input("Enter trigger price based on the spot price: "))
 
                 while True:
 
@@ -211,13 +217,14 @@ if(choice == 1):
                     Banknifty_last_price = Index_data['NSE:NIFTY BANK']['last_price']
                     print("BankNifty: ", Banknifty_last_price)
 
+                    time.sleep(0.10)
 
                     if(Banknifty_last_price<trigger_price):
                         Buy_Order(t_symbol, order_quantity, or_type)
                         break 
 
             elif(trade_type == "Sell"):
-                trigger_price = int(input("Enter trigger price based on the spot price: "))
+                trigger_price = float(input("Enter trigger price based on the spot price: "))
 
                 while True:
 
@@ -225,6 +232,7 @@ if(choice == 1):
                     Banknifty_last_price = Index_data['NSE:NIFTY BANK']['last_price']
                     print("BankNifty: ", Banknifty_last_price)
 
+                    time.sleep(0.10)
 
                     if(Banknifty_last_price>trigger_price):
                         Sell_Order(t_symbol, order_quantity, or_type)
@@ -236,7 +244,7 @@ if(choice == 1):
 
         if(Option_type == 1):
             if(trade_type == "Buy"):
-                trigger_price = int(input("Enter trigger price based on the spot price: "))
+                trigger_price = float(input("Enter trigger price based on the spot price: "))
 
                 while True:
 
@@ -244,13 +252,14 @@ if(choice == 1):
                     Finnifty_last_price = Index_data['NSE:NIFTY FIN SERVICE']['last_price']
                     print("FinNifty: ", Finnifty_last_price)
 
+                    time.sleep(0.10)
 
                     if(Finnifty_last_price>trigger_price):
                         Buy_Order(t_symbol, order_quantity, or_type)
                         break 
 
             elif(trade_type == "Sell"):
-                trigger_price = int(input("Enter trigger price based on the spot price: "))
+                trigger_price = float(input("Enter trigger price based on the spot price: "))
 
                 while True:
 
@@ -258,6 +267,7 @@ if(choice == 1):
                     Finnifty_last_price = Index_data['NSE:NIFTY FIN SERVICE']['last_price']
                     print("FinNifty: ", Finnifty_last_price)
 
+                    time.sleep(0.10)
 
                     if(Finnifty_last_price<trigger_price):
                         Sell_Order(t_symbol, order_quantity, or_type)
@@ -267,7 +277,7 @@ if(choice == 1):
 
         elif(Option_type == 2):
             if(trade_type == "Buy"):
-                trigger_price = int(input("Enter trigger price based on the spot price: "))
+                trigger_price = float(input("Enter trigger price based on the spot price: "))
 
                 while True:
 
@@ -275,13 +285,14 @@ if(choice == 1):
                     Finnifty_last_price = Index_data['NSE:NIFTY FIN SERVICE']['last_price']
                     print("FinNifty: ", Finnifty_last_price)
 
+                    time.sleep(0.10)
 
                     if(Finnifty_last_price<trigger_price):
                         Buy_Order(t_symbol, order_quantity, or_type)
                         break 
                     
             elif(trade_type == "Sell"):
-                trigger_price = int(input("Enter trigger price based on the spot price: "))
+                trigger_price = float(input("Enter trigger price based on the spot price: "))
 
                 while True:
 
@@ -289,6 +300,7 @@ if(choice == 1):
                     Finnifty_last_price = Index_data['NSE:NIFTY FIN SERVICE']['last_price']
                     print("FinNifty: ", Finnifty_last_price)
 
+                    time.sleep(0.10)
 
                     if(Finnifty_last_price>trigger_price):
                         Sell_Order(t_symbol, order_quantity, or_type)
@@ -346,6 +358,8 @@ elif(choice == 2):
                     Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
                     print("Nifty 50: ", Nifty50_last_price)
 
+                    time.sleep(0.10)
+
 
                     if(Nifty50_last_price>=tgt_price or Nifty50_last_price<=sl_price):
                         Sell_Order(t_symbol, quantity, product_type)
@@ -358,7 +372,7 @@ elif(choice == 2):
                     Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
                     print("Nifty 50: ", Nifty50_last_price)
 
-                    time.sleep(0.01)
+                    time.sleep(0.10)
 
 
                     if(Nifty50_last_price<=tgt_price or Nifty50_last_price>=sl_price):
@@ -376,6 +390,7 @@ elif(choice == 2):
                     Banknifty_last_price = Index_data['NSE:NIFTY BANK']['last_price']
                     print("BankNifty: ", Banknifty_last_price)
 
+                    time.sleep(0.10)
 
                     if(Banknifty_last_price>=tgt_price or Banknifty_last_price<=sl_price):
                         Sell_Order(t_symbol, quantity, product_type)
@@ -389,6 +404,8 @@ elif(choice == 2):
                     Banknifty_last_price = Index_data['NSE:NIFTY BANK']['last_price']
                     print("BankNifty: ", Banknifty_last_price)
 
+
+                    time.sleep(0.10)
 
                     if(Banknifty_last_price<=tgt_price or Banknifty_last_price>=sl_price):
                         Sell_Order(t_symbol, quantity, product_type)
@@ -404,6 +421,8 @@ elif(choice == 2):
                     Finnifty_last_price = Index_data['NSE:NIFTY FIN SERVICE']['last_price']
                     print("FinNifty: ", Finnifty_last_price)
 
+                    time.sleep(0.10)
+
 
                     if(Finnifty_last_price>=tgt_price or Finnifty_last_price<=sl_price):
                         Sell_Order(t_symbol, quantity, product_type)
@@ -415,6 +434,8 @@ elif(choice == 2):
                     Finnifty_last_price = Index_data['NSE:NIFTY FIN SERVICE']['last_price']
                     print("FinNifty: ", Finnifty_last_price)
 
+
+                    time.sleep(0.10)
 
                     if(Finnifty_last_price<=tgt_price or Finnifty_last_price>=sl_price):
                         Sell_Order(t_symbol, quantity, product_type)
@@ -430,6 +451,7 @@ elif(choice == 2):
                     Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
                     print("Nifty 50: ", Nifty50_last_price)
 
+                    time.sleep(0.10)
 
                     if(Nifty50_last_price<=tgt_price or Nifty50_last_price>=sl_price):
                         Buy_Order(t_symbol, quantity, product_type)
@@ -442,6 +464,7 @@ elif(choice == 2):
                     Nifty50_last_price = Index_data['NSE:NIFTY 50']['last_price']
                     print("Nifty 50: ", Nifty50_last_price)
 
+                    time.sleep(0.10)
 
                     if(Nifty50_last_price>=tgt_price or Nifty50_last_price<=sl_price):
                         Buy_Order(t_symbol, quantity, product_type)
@@ -458,6 +481,7 @@ elif(choice == 2):
                     Banknifty_last_price = Index_data['NSE:NIFTY BANK']['last_price']
                     print("BankNifty: ", Banknifty_last_price)
 
+                    time.sleep(0.10)    
 
                     if(Banknifty_last_price<=tgt_price or Banknifty_last_price>=sl_price):
                         Buy_Order(t_symbol, quantity, product_type)
@@ -471,6 +495,8 @@ elif(choice == 2):
                     Banknifty_last_price = Index_data['NSE:NIFTY BANK']['last_price']
                     print("BankNifty: ", Banknifty_last_price)
 
+
+                    time.sleep(0.10)
 
                     if(Banknifty_last_price>=tgt_price or Banknifty_last_price<=sl_price):
                         Buy_Order(t_symbol, quantity, product_type)
@@ -486,6 +512,7 @@ elif(choice == 2):
                     Finnifty_last_price = Index_data['NSE:NIFTY FIN SERVICE']['last_price']
                     print("FinNifty: ", Finnifty_last_price)
 
+                    time.sleep(0.10)
 
                     if(Finnifty_last_price<=tgt_price or Finnifty_last_price>=sl_price):
                         Buy_Order(t_symbol, quantity, product_type)
@@ -497,6 +524,7 @@ elif(choice == 2):
                     Finnifty_last_price = Index_data['NSE:NIFTY FIN SERVICE']['last_price']
                     print("FinNifty: ", Finnifty_last_price)
 
+                    time.sleep(0.10)
 
                     if(Finnifty_last_price>=tgt_price or Finnifty_last_price<=sl_price):
                         Buy_Order(t_symbol, quantity, product_type)
@@ -505,8 +533,8 @@ elif(choice == 2):
 elif(choice == 3):
     position_length = len(position)
     for i in range(0,position_length):
-        x = position['net'][i]['tradingsymbol']
-        print(i,x)
+        x = position['day'][i]['tradingsymbol']
+        print(position)
     
 
 else:
