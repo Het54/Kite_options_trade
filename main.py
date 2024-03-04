@@ -5,7 +5,7 @@ import pytz
 
 #Login into Kite
 
-enctoken = "Enter your enc token here"
+enctoken = "enter your enc token here"
 kite = KiteApp(enctoken=enctoken)
 
 date_s = datetime.time(hour=9, minute=15)
@@ -17,7 +17,7 @@ position = kite.positions()
 
 #Function for order placement for Buy
 def Buy_Order(t_symbol, quantity, product_type):
-  kite.place_order(variety=kite.VARIETY_REGULAR,
+  x = kite.place_order(variety=kite.VARIETY_REGULAR,
                     exchange=kite.EXCHANGE_NFO,
                     tradingsymbol=t_symbol,
                     transaction_type=kite.TRANSACTION_TYPE_BUY,
@@ -32,10 +32,11 @@ def Buy_Order(t_symbol, quantity, product_type):
                     stoploss=None,
                     trailing_stoploss=None,
                     tag="Buy_order")
+  print(x)
   
 #Function for order placement for Sell
 def Sell_Order(t_symbol, quantity, product_type):
-    kite.place_order(variety=kite.VARIETY_REGULAR,
+    x = kite.place_order(variety=kite.VARIETY_REGULAR,
                     exchange=kite.EXCHANGE_NFO,
                     tradingsymbol=t_symbol,
                     transaction_type=kite.TRANSACTION_TYPE_SELL,
@@ -50,6 +51,7 @@ def Sell_Order(t_symbol, quantity, product_type):
                     stoploss=None,
                     trailing_stoploss=None,
                     tag="Sell_oreder")
+    print(x)
 
 
 
@@ -321,29 +323,29 @@ elif(choice == 2):
         print("Only Integer values are allowed!!")  
 
     print("\nPositions: ")
-    position_length = len(position['day'])
+    position_length = len(position['net'])
     for i in range(0,position_length):
-        x = position['day'][i]['tradingsymbol']
+        x = position['net'][i]['tradingsymbol']
         print(i,x) 
     
     selected_postion = int(input("\nWhich Position you would like to add Sl and Tgt to? \n"))
 
-    if(position['day'][selected_postion]['quantity'] < 0):
+    if(position['net'][selected_postion]['quantity'] < 0):
         trade = "sell"
     else:
         trade = "buy"
 
-    product_type = (position['day'][selected_postion]['product'])
+    product_type = (position['net'][selected_postion]['product'])
     if(product_type == "MIS"):
         product_type = kite.PRODUCT_MIS
     else:
         product_type = kite.PRODUCT_NRML
 
-    t_symbol = position['day'][selected_postion]['tradingsymbol']
+    t_symbol = position['net'][selected_postion]['tradingsymbol']
 
-    quantity = abs(position['day'][selected_postion]['quantity'])
+    quantity = abs(position['net'][selected_postion]['quantity'])
 
-    selected_pos = position['day'][selected_postion]['tradingsymbol']
+    selected_pos = position['net'][selected_postion]['tradingsymbol']
     op_type = selected_pos[-2:]
     print(selected_pos)
     
@@ -533,7 +535,7 @@ elif(choice == 2):
 elif(choice == 3):
     position_length = len(position)
     for i in range(0,position_length):
-        x = position['day'][i]['tradingsymbol']
+        x = position['net'][i]['tradingsymbol']
         print(position)
     
 
